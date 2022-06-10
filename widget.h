@@ -2,7 +2,8 @@
 #define WIDGET_H
 
 #include <QWidget>
-
+#include "tcpserver.h"
+#include "tcpclient.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
@@ -14,8 +15,11 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+    void init();
 
 private:
     Ui::Widget *ui;
+    TcpServer *server;
+    TcpClient *client;
 };
 #endif // WIDGET_H

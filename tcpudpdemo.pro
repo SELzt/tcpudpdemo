@@ -1,5 +1,5 @@
 QT       += core gui
-
+QT += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -10,12 +10,19 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
+    tcpclient.cpp \
+    tcpserver.cpp \
     widget.cpp
 
 HEADERS += \
+    constant.h \
+    tcpclient.h \
+    tcpserver.h \
     widget.h
 
 FORMS += \
+    tcpclient.ui \
+    tcpserver.ui \
     widget.ui
 
 # Default rules for deployment.
