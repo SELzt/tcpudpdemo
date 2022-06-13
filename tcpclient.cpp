@@ -256,8 +256,9 @@ void TcpClient::on_cb_timer_client_stateChanged(int arg1)
         int delay = ui->et_timer_client->text().toInt();
         if(timer == nullptr){
             timer = new QTimer;
+            connect(timer,&QTimer::timeout,ui->btn_send_client,&QPushButton::click);
         }
-         connect(timer,&QTimer::timeout,ui->btn_send_client,&QPushButton::click);
+
         timer->start(delay);
     }
     else {

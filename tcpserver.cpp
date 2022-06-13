@@ -109,6 +109,7 @@ void TcpServer::newConnectedSlot() {
             if(receivesize >= filesize){
                 //写入完毕 将接收文件标识置为false 并将其余有关文件的信息置为初始值
                 ui->text_server->append("文件写入完毕");
+
                 isReceiveFile = false;
                 filesize = 0;
                 receivesize = 0;
@@ -296,9 +297,10 @@ void TcpServer::on_cb_timer_server_stateChanged(int arg1)
     if(arg1 == 2){
         if(timer == nullptr){
             timer = new QTimer;
+            connect(timer,&QTimer::timeout,ui->btn_send_server,&QPushButton::click);
         }
         int delay = ui->et_timer_server->text().toInt();
-        connect(timer,&QTimer::timeout,ui->btn_send_server,&QPushButton::click);
+
         timer->start(delay);
     }
     else{

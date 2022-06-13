@@ -42,6 +42,8 @@ private slots:
 
     void on_textEdit_textChanged();
 
+    void on_btn_search_clicked();
+
 public:
     bool isHexSend = false;
     bool isHexRecv = false;

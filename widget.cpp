@@ -41,8 +41,9 @@ void Widget :: init(){
     ui->tabWidget->addTab(client,"TCP Client");
     ui->tabWidget->addTab(frUdpServer,"UDP Server");
     ui->tabWidget->addTab(frUdpClient,"UdpClient");
-    connect(client,&TcpClient::exportSignal,exportUtilUdpClient,&ExportUtil::exports);
-    connect(exportUtilUdpClient,&ExportUtil::exportState,client,&TcpClient::exportStateSlot);
+
+    connect(client,&TcpClient::exportSignal,exportUtilTcpClient,&ExportUtil::exports);
+    connect(exportUtilTcpClient,&ExportUtil::exportState,client,&TcpClient::exportStateSlot);
     connect(server,&TcpServer::exportSignal,exportUtilTcpServer,&ExportUtil::exports);
     connect(exportUtilTcpServer,&ExportUtil::exportState,server,&TcpServer::exportStateSlot);
 

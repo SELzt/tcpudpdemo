@@ -246,3 +246,29 @@ void FrUdpServer::on_textEdit_textChanged()
     ui->textEdit->moveCursor(QTextCursor::End);
 }
 
+
+void FrUdpServer::on_btn_search_clicked()
+{
+    QString key = ui->et_search_text->text();
+    if(key.isEmpty()){
+        QMessageBox::information(this,"提示信息","搜索关键词为空",QMessageBox::Ok);
+        return;
+    }
+    if(ui->textEdit->find(key)){
+        QPalette palette = ui->textEdit->palette();
+        palette.setBrush(QPalette::Highlight,Qt::green);
+        ui->textEdit->setPalette(palette);
+    }
+    else{
+        ui->textEdit->moveCursor(QTextCursor::Start);
+        if(ui->textEdit->find(key)){
+            QPalette palette = ui->textEdit->palette();
+            palette.setBrush(QPalette::Highlight,Qt::green);
+            ui->textEdit->setPalette(palette);
+        }
+        else{
+            QMessageBox::information(this,"提示信息","搜索无结果",QMessageBox::Ok);
+        }
+    }
+}
+
